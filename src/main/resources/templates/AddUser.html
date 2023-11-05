@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>K2K Register</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+    <css>
+
+    </css>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card">
+                <h2 class="card-title text-center">회원 가입</h2>
+                <div class="card-body py-md-4" th:object="${user}">
+                    <form _lpchecked="1" th:action="@{/k2k/addUser}" th:method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="이름" th:field="*{name}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="id" placeholder="아이디" th:field="*{id}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="비밀번호" th:field="*{password}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="type" placeholder="역할" th:field="*{type}">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="phone" placeholder="전화 번호" th:field="*{phone_num}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="reginum" placeholder="주민등록번호" th:field="*{regi_num}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address" placeholder="주소" th:field="*{address}">
+                        </div>
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <a th:href="@{/k2k}">취소</a>
+                            <button class="btn btn-primary">생성 하기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+
+</body>
+</html>

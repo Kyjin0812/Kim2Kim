@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table, td, th {
+            border : 1px solid black;
+            border-collapse : collapse;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="mb-4">유저 목록</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>유저 ID</th>
+            <th>유저 이름</th>
+            <th>유저 역할</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getName()}"></td>
+            <td th:text="${user.getType()}"></td>
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{'/k2k/viewUsers/' + ${user.getId()}}">정보 더보기</a>
+                <a class="btn btn-warning btn-sm" th:href="@{'/k2k/editUser/' + ${user.getId()}}">수정하기</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/k2k/deleteUser/' + ${user.getId()}}">삭제하기</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" th:href="@{/k2k}">돌아가기</a>
+</div>
+</body>
+</html>
