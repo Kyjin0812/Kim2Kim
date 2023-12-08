@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>호텔 등록</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div layout:fragment="content">
+    
+    <div class="container my-3">
+    <form th:action="@{/login}" method="post">
+        <p style="font-size: 40px;" class="text-left">호텔 등록</p>
+        <div class="mb-3 col-sm-6">
+            <label for="username" class="form-label">숙박 이름</label>
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="phone" class="form-label">전화 번호</label>
+            <input type="text" name="phone" id="phone" class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="type" class="form-label">숙박 종류</label>
+            <input type="text" name="type" id="type" class="form-control">
+        </div>
+        <div class="mb-3  col-sm-6" >
+            <label for="city" class="form-label">도</label>
+            <input type="text" name="city" id="city" class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="district" class="form-label">구</label>
+            <input type="text" name="district" id="district" class="form-control">
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label for="room" class="form-label">호실 개수</label>
+            <input type="text" name="room" id="room" class="form-control">
+        </div>
+        <ul style="list-style: none;">
+            <li style="float: left;">
+                <div class="mb-3  col-sm-6">
+                <button type="submit" class="btn btn-primary">취소</button>
+                </div>
+            </li>
+            <li style="float: left;">
+                <div class="mb-3  col-sm-6">
+                <button type="submit" class="btn btn-primary">등록</button>
+                </div>
+            </li>
+        </ul>
+        
+        
+    </form>
+    </div>
+    </div>
+    </body>
+</html>
