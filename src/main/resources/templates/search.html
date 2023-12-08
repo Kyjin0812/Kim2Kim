@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{}" method="get">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <select id = "searchCondition" name="searchCondition"
+                    class="form-control">
+                <option value="TITLE">제목</option>
+                <option value="CONTENT">내용</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <input type="text" id = "keyword" name="searchKeyword"
+                   class="form-control" th:value = "${searchKeyword}">
+        </div>
+        <div></div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">검색</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
