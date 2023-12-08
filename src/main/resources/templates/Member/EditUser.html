@@ -9,7 +9,7 @@
 <body>
 <div class="container mt-4">
     <h1 class="mb-4">회원 정보 수정</h1>
-    <form th:action="@{/k2k/editUser/{id}(id=${member.id})}" method="post" th:object="${member}">
+    <form th:action="@{/k2k/User/edit/{id}(id=${member.id})}" method="post" th:object="${member}">
         <div class="form-group">
             <label for="username">이름</label>
             <input type="text" class="form-control" id="username" th:field="*{name}" required>
@@ -28,7 +28,7 @@
         </div>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
-    <a class="btn btn-secondary mt-3" th:href="@{/k2k/viewUsers}">취소</a>
+    <a class="btn btn-secondary mt-3" th:href="@{/k2k/User/view}">취소</a>
 </div>
 </body>
 </html>

@@ -37,13 +37,13 @@
             <td th:text="${lodgment.getRegion_district()}"></td>
             <td th:text="${lodgment.getRoom_num()}"></td>
             <td>
-                <a class="btn btn-warning btn-sm" th:href="@{'/k2k/editLodgment/' + ${lodgment.getId()}}">수정하기</a>
-                <a class="btn btn-danger btn-sm" th:href="@{'/k2k/deleteLodgment/' + ${lodgment.getId()}}">삭제하기</a>
+                <a class="btn btn-warning btn-sm" th:href="@{'/k2k/Lodgment/edit/' + ${lodgment.getId()}}">수정하기</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/k2k/Lodgment/delete/' + ${lodgment.getId()}}">삭제하기</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-success" th:href="@{/k2k}">돌아가기</a>
+    <a class="btn btn-success" th:href="@{/k2k/admin}">돌아가기</a>
 </div>
 </body>
 </html>

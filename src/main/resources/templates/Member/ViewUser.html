@@ -29,14 +29,14 @@
             <td th:text="${member.getName()}"></td>
             <td th:text="${member.getType()}"></td>
             <td>
-                <a class="btn btn-primary btn-sm" th:href="@{'/k2k/viewUsers/' + ${member.getId()}}">정보 더보기</a>
-                <a class="btn btn-warning btn-sm" th:href="@{'/k2k/editUser/' + ${member.getId()}}">수정하기</a>
-                <a class="btn btn-danger btn-sm" th:href="@{'/k2k/deleteUser/' + ${member.getId()}}">삭제하기</a>
+                <a class="btn btn-primary btn-sm" th:href="@{'/k2k/User/view/' + ${member.getId()}}">정보 더보기</a>
+                <a class="btn btn-warning btn-sm" th:href="@{'/k2k/User/edit/' + ${member.getId()}}">수정하기</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/k2k/User/delete/' + ${member.getId()}}">삭제하기</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-success" th:href="@{/k2k}">돌아가기</a>
+    <a class="btn btn-success" th:href="@{/k2k/loginSuccess}">돌아가기</a>
 </div>
 </body>
 </html>
