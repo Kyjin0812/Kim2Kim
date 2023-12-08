@@ -6,9 +6,9 @@ import com.example.k2k_project.Entity.Comment;
 import java.util.List;
 
 public interface CommentService {
-    Comment getComment(int id);
+    Comment getComment(long id);
     void saveComment(Comment comment);
-    void changeComment(int id, CommentDto CommentDto);
+    void changeComment(long id, CommentDto CommentDto);
     List<Comment> findComments();
-    void deleteComment(int id);
+    void deleteComment(long id);
 }

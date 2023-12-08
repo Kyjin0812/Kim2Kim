@@ -8,12 +8,12 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class UserDto {
+public class MemberDto {
     private String id;
     private String name;
     private String address;
     private String phone_num;
     private String password;
     private String regi_num;
-    private String type;
+    private String role;
 }

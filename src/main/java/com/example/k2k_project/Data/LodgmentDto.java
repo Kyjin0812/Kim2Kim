@@ -13,5 +13,5 @@ public class LodgmentDto {
     private String type;
     private String region_do;
     private String region_district;
-    private int room_num;
+    private long room_num;
 }

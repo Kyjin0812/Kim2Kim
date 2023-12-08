@@ -15,8 +15,8 @@
         <div class="col-md-5">
             <div class="card">
                 <h2 class="card-title text-center">회원 가입</h2>
-                <div class="card-body py-md-4" th:object="${user}">
-                    <form _lpchecked="1" th:action="@{/k2k/addUser}" th:method="post">
+                <div class="card-body py-md-4" th:object="${member}">
+                    <form _lpchecked="1" th:action="@{/k2k/User/add}" th:method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" placeholder="이름" th:field="*{name}">
                         </div>
@@ -27,7 +27,15 @@
                             <input type="password" class="form-control" id="password" placeholder="비밀번호" th:field="*{password}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="type" placeholder="역할" th:field="*{type}">
+                            <input type="text" class="form-control" id="type" >
+                            <select class="form-select" id="department" th:field="*{role}">
+                                <option th:value="ROLE_MEMBER"
+                                        th:text="회원" >
+                                </option>
+                                <option th:value="ROLE_ADMIN"
+                                        th:text="관리자" >
+                                </option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="tel" class="form-control" id="phone" placeholder="전화 번호" th:field="*{phone_num}">

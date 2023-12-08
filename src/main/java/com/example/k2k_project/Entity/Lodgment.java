@@ -1,7 +1,6 @@
 package com.example.k2k_project.Entity;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,10 +9,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 @Table(name="lodgment")
 public class Lodgment {
     @Id
@@ -37,15 +32,11 @@ public class Lodgment {
     private String region_district;
 
     @Column(nullable = false)
-    private int room_num;
-/*
-    @OneToMany(cascade = CascadeType.ALL)
-    @OrderBy("id asc")
-    @JoinColumn(name = "lodgment_id")
-    private List<Grade> grade = new ArrayList<>();
+    private Long room_num;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @OrderBy("id asc")
-    @JoinColumn(name = "lodgment_id")
-    private List<Reservation> reservation = new ArrayList<>();*/
+    @OneToMany
+    private List<Grade> grade = new ArrayList<Grade>();
+
+    @OneToMany
+    private List<Reservation> reservation = new ArrayList<Reservation>();
 }

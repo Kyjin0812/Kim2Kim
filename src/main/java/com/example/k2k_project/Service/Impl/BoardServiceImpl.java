@@ -1,35 +1,23 @@
 package com.example.k2k_project.Service.Impl;
 
-import com.example.k2k_project.Data.*;
 import com.example.k2k_project.Entity.*;
 import com.example.k2k_project.Repository.*;
 import com.example.k2k_project.Service.BoardService;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-    private final BoardRepository boardRepository;
-
     @Autowired
-    public BoardServiceImpl(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
-
-    @Override
-    public Board getBoard(int id) {
-        Optional<Board> board = boardRepository.findById(id);
-        if (board.isPresent()) {
-            return board.get();
-        }
-        else {
-            throw new EntityNotFoundException();
-        }
-    }
+    private BoardRepository boardRepository;
 
     @Override
     public void saveBoard(Board board) {
@@ -37,33 +25,33 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void changeBoard(int id, BoardDto boardDto) {
-        Optional<Board> selected_board = boardRepository.findById(id);
-        Board board;
-        if (selected_board.isPresent()) {
-            board = selected_board.get();
-            board.setTitle(boardDto.getTitle());
-            board.setDetail(boardDto.getDetail());
-            boardRepository.save(board);
-        }
-        else {
-            throw new EntityNotFoundException();
-        }
+    public void findBoardById(long id) {
+        boardRepository.findById(id).get();
     }
 
     @Override
-    public List<Board> findBoards() {
-        return boardRepository.findAll();
+    public void deleteBoard(Board board) {
+        boardRepository.deleteById(board.getId());
     }
 
     @Override
-    public void deleteBoard(int id) {
-        Optional<Board> selectedBoard = boardRepository.findById(id);
-        if (selectedBoard.isPresent()) {
-            boardRepository.deleteById(id);
+    public Page<Board> getBoardList(int page, Search search) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+
+        BooleanBuilder builder = new BooleanBuilder();
+
+        QBoard qboard = QBoard.board;
+
+        if(search.getSearchCondition().equals("TITLE")) {
+            builder.and(qboard.title.like("%" + search.getSearchKeyword() + "%"));
         }
-        else {
-            throw new EntityNotFoundException();
+        else if(search.getSearchCondition().equals("CONTENT")) {
+            builder.and(qboard.detail.like("%" + search.getSearchKeyword() + "%"));
         }
+
+        Pageable pageable = PageRequest.of(page, 5, Sort.by(sorts));
+
+        return boardRepository.findAll(builder, pageable);
     }
 }

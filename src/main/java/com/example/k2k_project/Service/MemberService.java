@@ -5,10 +5,10 @@ import com.example.k2k_project.Entity.*;
 
 import java.util.List;
 
-public interface UserService {
-    User getUser(String id);
-    void saveUser(User user);
-    void changeUser(String id, UserDto userDto);
-    List<User> findUsers();
+public interface MemberService {
+    Member getUser(String id);
+    void saveUser(Member member);
+    void changeUser(String id, MemberDto memberDto);
+    List<Member> findUsers();
     void deleteUser(String id);
 }

@@ -1,8 +1,9 @@
 package com.example.k2k_project.Data;
 
-import com.example.k2k_project.Entity.User;
+import com.example.k2k_project.Entity.Member;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -11,9 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class BoardDto {
-    private List<User> user_id;
     private String title;
     private String detail;
-    private int like;
-    private int dislike;
+    private long like;
+    private long dislike;
+    private Date start_date;
+    private Date update_date;
+    private List<Member> member_id;
 }

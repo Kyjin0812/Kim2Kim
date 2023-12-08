@@ -6,9 +6,9 @@ import com.example.k2k_project.Entity.Reservation;
 import java.util.List;
 
 public interface ReservationService {
-    Reservation getReservation(int id);
+    Reservation getReservation(long id);
     void saveReservation(Reservation reservation);
-    void changeReservation(int id, ReservationDto ReservationDto);
+    void changeReservation(long id, ReservationDto ReservationDto);
     List<Reservation> findReservations();
-    void deleteReservation(int id);
+    void deleteReservation(long id);
 }

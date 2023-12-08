@@ -9,7 +9,7 @@
 <body>
 <div class="container mt-4">
     <h1 class="mb-4">회원 정보 수정</h1>
-    <form th:action="@{/k2k/editUser/{id}(id=${user.id})}" method="post" th:object="${user}">
+    <form th:action="@{/k2k/editUser/{id}(id=${member.id})}" method="post" th:object="${member}">
         <div class="form-group">
             <label for="username">이름</label>
             <input type="text" class="form-control" id="username" th:field="*{name}" required>

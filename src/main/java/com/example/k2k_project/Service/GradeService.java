@@ -5,8 +5,8 @@ import com.example.k2k_project.Entity.Grade;
 import java.util.List;
 
 public interface GradeService {
-    Grade getGrade(int id);
+    Grade getGrade(long id);
     void saveGrade(Grade grade);
-    //void changeGrade(int id, GradeDto GradeDto);
+    //void changeGrade(long id, GradeDto GradeDto);
     List<Grade> findGrades();
 }

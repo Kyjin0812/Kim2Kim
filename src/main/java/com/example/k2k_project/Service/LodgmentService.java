@@ -6,9 +6,9 @@ import com.example.k2k_project.Entity.Lodgment;
 import java.util.List;
 
 public interface LodgmentService {
-    Lodgment getLodgment(int id);
+    Lodgment getLodgment(long id);
     void saveLodgment(Lodgment lodgment);
-    void changeLodgment(int id, LodgmentDto LodgmentDto);
+    void changeLodgment(long id, LodgmentDto LodgmentDto);
     List<Lodgment> findLodgments();
-    void deleteLodgment(int id);
+    void deleteLodgment(long id);
 }

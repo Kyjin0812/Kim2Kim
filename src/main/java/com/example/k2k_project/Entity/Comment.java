@@ -4,38 +4,41 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 @Table(name="comment")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(length = 100, nullable = false)
     private String detail;
 
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private int like;
+    @Column
+    private Long c_like = 0L;
 
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private int dislike;
+    @Column
+    private Long c_dislike = 0L;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(updatable = false)
+    private Date start_date = new Date();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "board_id", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column
+    private Date update_date = new Date();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "board_id")
     private Board board;
 }

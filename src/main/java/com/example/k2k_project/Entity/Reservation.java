@@ -3,33 +3,38 @@ package com.example.k2k_project.Entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
 @Table(name="reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @Column(length = 3, nullable = false)
+    private long people_num;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lodgment_id", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column
+    private Date start_date = new Date();
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column
+    private Date last_date = new Date();
+
+    @Column(length = 3, nullable = false)
+    private long period;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Member member;
+
+    @ManyToOne
+    @JoinColumn(name = "lodgment_id")
     private Lodgment lodgment;
-
-    @Column(length = 3, nullable = false)
-    private int people_num;
-
-    @Column(length = 3, nullable = false)
-    private int period;
 }

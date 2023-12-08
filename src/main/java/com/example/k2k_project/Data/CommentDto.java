@@ -3,6 +3,7 @@ package com.example.k2k_project.Data;
 import com.example.k2k_project.Entity.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -11,9 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class CommentDto {
-    private List<User> user_id;
-    private List<Board> board_id;
     private String detail;
-    private int like;
-    private int dislike;
+    private long like;
+    private long dislike;
+    private Date start_date;
+    private Date update_date;
+    private List<Member> member_id;
+    private List<Board> board_id;
 }

@@ -13,15 +13,11 @@ import java.util.Optional;
 
 @Service
 public class CommentServiceImpl implements CommentService {
-    private final CommentRepository commentRepository;
-
     @Autowired
-    public CommentServiceImpl(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
+    private CommentRepository commentRepository;
 
     @Override
-    public Comment getComment(int id) {
+    public Comment getComment(long id) {
         Optional<Comment> comment = commentRepository.findById(id);
         if (comment.isPresent()) {
             return comment.get();
@@ -37,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void changeComment(int id, CommentDto CommentDto) {
+    public void changeComment(long id, CommentDto CommentDto) {
         Optional<Comment> selected_comment = commentRepository.findById(id);
         Comment comment;
         if (selected_comment.isPresent()) {
@@ -56,7 +52,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(int id) {
+    public void deleteComment(long id) {
         Optional<Comment> selectedComment = commentRepository.findById(id);
         if (selectedComment.isPresent()) {
             commentRepository.deleteById(id);

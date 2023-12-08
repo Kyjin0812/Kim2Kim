@@ -21,7 +21,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation getReservation(int id) {
+    public Reservation getReservation(long id) {
         Optional<Reservation> reservation= reservationRepository.findById(id);
         if (reservation.isPresent()) {
             return reservation.get();
@@ -37,7 +37,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void changeReservation(int id, ReservationDto ReservationDto) {
+    public void changeReservation(long id, ReservationDto ReservationDto) {
         Optional<Reservation> selected_reservation = reservationRepository.findById(id);
         Reservation reservation;
         if (selected_reservation.isPresent()) {
@@ -57,7 +57,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void deleteReservation(int id) {
+    public void deleteReservation(long id) {
         Optional<Reservation> selectedReservation = reservationRepository.findById(id);
         if (selectedReservation.isPresent()) {
             reservationRepository.deleteById(id);

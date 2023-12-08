@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class GradeDto {
-    private List<User> user_id;
+    private List<Member> member_id;
     private List<Lodgment> lodgment_id;
     private float grade;
     private String detail;

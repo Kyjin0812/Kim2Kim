@@ -20,7 +20,7 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public Grade getGrade(int id) {
+    public Grade getGrade(long id) {
         Optional<Grade> grade = gradeRepository.findById(id);
         if (grade.isPresent()) {
             return grade.get();
@@ -34,21 +34,7 @@ public class GradeServiceImpl implements GradeService {
     public void saveGrade(Grade grade) {
         gradeRepository.save(grade);
     }
-    /*
-        @Override
-        public void changeGrade(int id, GradeDto GradeDto) {
-            Optional<Grade> selected_grade = gradeRepository.findById(id);
-            Grade grade;
-            if (selected_grade.isPresent()) {
-                grade = selected_grade.get();
-                grade.setDetail(grade.getDetail());
-                gradeRepository.save(grade);
-            }
-            else {
-                throw new EntityNotFoundException();
-            }
-        }
-    */
+
     @Override
     public List<Grade> findGrades() {
         return gradeRepository.findAll();

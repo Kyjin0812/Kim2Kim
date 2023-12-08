@@ -21,7 +21,7 @@ public class LodgmentServiceImpl implements LodgmentService {
     }
 
     @Override
-    public Lodgment getLodgment(int id) {
+    public Lodgment getLodgment(long id) {
         Optional<Lodgment> lodgment= lodgmentRepository.findById(id);
         if (lodgment.isPresent()) {
             return lodgment.get();
@@ -37,7 +37,7 @@ public class LodgmentServiceImpl implements LodgmentService {
     }
 
     @Override
-    public void changeLodgment(int id, LodgmentDto LodgmentDto) {
+    public void changeLodgment(long id, LodgmentDto LodgmentDto) {
         Optional<Lodgment> selected_lodgment = lodgmentRepository.findById(id);
         Lodgment lodgment;
         if (selected_lodgment.isPresent()) {
@@ -61,7 +61,7 @@ public class LodgmentServiceImpl implements LodgmentService {
     }
 
     @Override
-    public void deleteLodgment(int id) {
+    public void deleteLodgment(long id) {
         Optional<Lodgment> selectedLodgment = lodgmentRepository.findById(id);
         if (selectedLodgment.isPresent()) {
             lodgmentRepository.deleteById(id);
